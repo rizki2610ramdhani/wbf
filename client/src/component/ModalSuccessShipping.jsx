@@ -8,7 +8,7 @@ export default function ModalSuccessAddProduct(props) {
                 <Modal.Body className=" m-auto p-0 w-100">
                     <div >
                         <Alert className="w-100 m-auto fs-2" style={{ textAlign: "center" }} variant="success">
-                            Thank you for ordering in us, please waiting for your order to get home. Happy Shoping^^
+                           Makasih BosQue
                         </Alert>
                     </div>
                 </Modal.Body>

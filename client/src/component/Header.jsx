@@ -122,6 +122,10 @@ function Header(props) {
               state.user.is_admin === true ? (
                 <Nav className="ms-auto gap-3">
                   <NavDropdown id="dropdown" title={<img src={Profile} alt="" className="rounded-circle" style={{ cursor:"pointer", objectFit:"cover", width: "60px", height: "60px" }} />}>
+                    <NavDropdown.Item href="/">
+                      <img src={IconAddProduct} alt="" style={{ width: 40, height: 38.17 }} />
+                      <span className="ms-2 fw-bold">Dashboard</span>
+                    </NavDropdown.Item>
                     <NavDropdown.Item href="/add-product">
                       <img src={IconAddProduct} alt="" style={{ width: 40, height: 38.17 }} />
                       <span className="ms-2 fw-bold">Add Product</span>

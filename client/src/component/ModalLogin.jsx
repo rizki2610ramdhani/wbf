@@ -48,9 +48,9 @@ export const Login = (props) => {
 
       // Status check
       if (response.data.data.is_admin === true) {
-        Navigate("/admin-dashboard");
+        Navigate("/");
       } else {
-        Navigate("/my-transaction");
+        Navigate("/");
       }
       Swal.fire({
         position: 'center',

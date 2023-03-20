@@ -28,11 +28,11 @@ function ListProduct() {
     const response = await API.get("/products");
     return response.data.data;
   });
-    // If confirm is true, execute delete data
+  // If confirm is true, execute delete data
   const deleteById = useMutation(async (id) => {
     try {
-     const response = await API.delete(`/product/${id}`);
-     console.log(response)
+      const response = await API.delete(`/product/${id}`);
+      console.log(response)
       refetch();
       navigate("/list-product")
       Swal.fire({
@@ -72,56 +72,67 @@ function ListProduct() {
   let asceding = []
   if (products !== undefined) {
     asceding = [...products]
-    asceding.sort((a,b) => b.id - a.id)
+    asceding.sort((a, b) => b.id - a.id)
   }
 
   return (
     <>
-    <Container>
-      <h1 className="custom-margin-top product-title font-size-36px mb-5">List Product</h1>
-        <Table responsive bordered hover className="mx-auto w-100 animate__animated animate__fadeIn">
-          <thead style={{ backgroundColor: "#E5E5E5" }}>
-            <tr>
-              <th>No.</th>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Stock</th>
-              <th>Price</th>
-              <th>Description</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-          {asceding?.map((item, index) => {
-            return (
-              <tr key={item.id}>
-                <td className="text-center">{index + 1}</td>
-                <td className="text-center">
-                  <img src={`${item.photo}`} alt={item.name} className="w-100" />
-                </td>
-                <td >{item.name}</td>
-                <td >{item.stock}</td>
-                <td >{item.price}</td>
-                <td style={{ textAlign: "justify" }}>{item.description}</td>
-                <td className="text-center" style={{ width: "15rem" }}>
-                  <Button onClick={() => handleDelete(item.id)} variant="danger" className="py-0 me-2 button-delete mb-2" style={{ width: "48%" }}>
-                    delete
-                  </Button>
-                  <Button onClick={() => handleUpdate(item.id)} variant="success" className="py-0 button-update mb-2" style={{ width: "48%" }}>
-                    update
-                  </Button>
-                </td>
-              </tr>
-            )
-            })}
-          </tbody>
-        </Table>
-    </Container>
-    <DeleteData
-        setConfirmDelete={setConfirmDelete}
-        show={show}
-        handleClose={handleClose}
-      />
+      {products?.length != 0 ?
+        <>
+          <Container>
+            <h1 className="custom-margin-top product-title font-size-36px mb-5">List Product</h1>
+            <Table responsive bordered hover className="mx-auto w-100 animate__animated animate__fadeIn">
+              <thead style={{ backgroundColor: "#E5E5E5" }}>
+                <tr>
+                  <th>No.</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Stock</th>
+                  <th>Price</th>
+                  <th>Description</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {asceding?.map((item, index) => {
+                  return (
+                    <tr key={item.id}>
+                      <td className="text-center">{index + 1}</td>
+                      <td className="text-center">
+                        <img src={`${item.photo}`} alt={item.name} className="w-100" />
+                      </td>
+                      <td >{item.name}</td>
+                      <td >{item.stock}</td>
+                      <td >{item.price}</td>
+                      <td style={{ textAlign: "justify" }}>{item.description}</td>
+                      <td className="text-center" style={{ width: "15rem" }}>
+                        <Button onClick={() => handleDelete(item.id)} variant="danger" className="py-0 me-2 button-delete mb-2" style={{ width: "48%" }}>
+                          delete
+                        </Button>
+                        <Button onClick={() => handleUpdate(item.id)} variant="success" className="py-0 button-update mb-2" style={{ width: "48%" }}>
+                          update
+                        </Button>
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </Table>
+          </Container>
+          <DeleteData
+            setConfirmDelete={setConfirmDelete}
+            show={show}
+            handleClose={handleClose}
+          />
+        </>
+        :
+        <>
+           <Container>
+            <h1 className="custom-margin-top product-title font-size-36px mb-5">List Product</h1>
+            <h5 className="text-center">product masih kosong masseh</h5>
+            </Container>
+        </>
+      }
     </>
   );
 }

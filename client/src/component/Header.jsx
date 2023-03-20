@@ -126,6 +126,7 @@ function Header(props) {
                       <img src={IconAddProduct} alt="" style={{ width: 40, height: 38.17 }} />
                       <span className="ms-2 fw-bold">Dashboard</span>
                     </NavDropdown.Item>
+                    <NavDropdown.Divider />
                     <NavDropdown.Item href="/add-product">
                       <img src={IconAddProduct} alt="" style={{ width: 40, height: 38.17 }} />
                       <span className="ms-2 fw-bold">Add Product</span>
